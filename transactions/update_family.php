@@ -9,7 +9,7 @@ $name = $_POST['name'];
 $id_status = $_POST['id_status'];
 
 try {
-    $query = "UPDATE keluarga SET nama = '$name' , id_status = '$id_status' WHERE id = '$id';";
+    $query = "UPDATE keluarga SET nama = '$name' , id_status = '$id_status' WHERE id = '$id'";
     $queryExecute = mysqli_query($conn, $query);
 
     if ($queryExecute) {
