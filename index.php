@@ -2,7 +2,6 @@
 $queryExecuteShowStatus = null;
 $queryExecuteShowFamily = null;
 $dataUpdate = [];
-$selectedItem = [];
 include "transactions/show_status.php";
 include "transactions/show_family.php";
 
@@ -29,14 +28,14 @@ include "transactions/show_family.php";
               <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                 data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                  <form action="#" method="POST">
+                  <form action="transactions/create_family.php" method="POST">
                     <div class="mb-3">
                       <label for="inputName" class="form-label">Nama</label>
                       <input type="text" class="form-control" id="inputName" aria-describedby="inputNameHelp"
                         name="name" autocomplete="off" required>
                     </div>
                     <div class="mb-3">
-                        <select class="form-select" aria-label="Default select example" required>
+                        <select class="form-select" aria-label="Default select example" name="id_status" required>
                             <option value="" selected disabled>Please select</option>
                             <?php
                             while ($data = mysqli_fetch_array($queryExecuteShowStatus)) {
@@ -88,7 +87,7 @@ include "transactions/show_family.php";
       <!-- START | Modal Delete -->
       <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-          <form action="#" method="POST">
+          <form action="transactions/delete_family.php" method="POST">
             <div class="modal-content">
               <div class="modal-header">
                   <input type="text" class="form-control" id="inputIdModalDelete" aria-describedby="inputIdModalHelp" name="id"
@@ -108,7 +107,7 @@ include "transactions/show_family.php";
       <!-- START | Modal Update -->
       <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-          <form action="#" method="POST">
+          <form action="transactions/update_family.php" method="POST">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="updateModalLabel">Update (nama...)</h5>
@@ -124,7 +123,7 @@ include "transactions/show_family.php";
                 </div>
                 <div class="mb-3">
                     <div class="mb-3">
-                        <select class="form-select" aria-label="Default select example" required>
+                        <select class="form-select" aria-label="Default select example" name="id_status" required>
                             <option value="" selected disabled>Please select</option>
                             <?php
                             foreach ($dataUpdate as $data) {
@@ -142,7 +141,7 @@ include "transactions/show_family.php";
           </form>
         </div>
       </div>
-      <!-- END | Modal Delete -->
+      <!-- END | Modal Update -->
 
     </section>
 
